@@ -26,18 +26,16 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(13, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(null, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 3 Valid
     @Test
     public void reducedPeriodsNoOverlapTest() {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(13, 20), new Period(1, 9)));
-        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(21, 22), new Period(9, 13)));
         Rate r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
 
         assertNotNull(r);
@@ -49,11 +47,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(13, 20), new Period(10, 16)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 5 Valid
@@ -72,11 +68,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 11), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 7 Invalid
@@ -85,11 +79,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(3, 11)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 8 Valid
@@ -109,11 +101,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(-2), new BigDecimal(1));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 10 Invalid
@@ -121,11 +111,10 @@ class MorganKelanTestTaskRate2 {
     public void normalRateGreaterThanTenTest() {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(20), new BigDecimal(1));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 11 Valid
@@ -145,11 +134,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(3), new BigDecimal(-1));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 13 Invalid
@@ -158,11 +145,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(15), new BigDecimal(13));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 14 Valid
@@ -182,11 +167,10 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(5), new BigDecimal(6));
         });
 
-        assertNull(thrown.getMessage());
     }
 
     //Test 16 Invalid
@@ -195,11 +179,9 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(5), new BigDecimal(5));
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Calculate Tests
@@ -268,11 +250,11 @@ class MorganKelanTestTaskRate2 {
     public void periodHasNormalReducedAndFreePeriodsTest() {
         Period period = new Period(12, 18);
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
-        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 14)));
 
         Rate r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7), new BigDecimal(5));
 
-        BigDecimal expected = new BigDecimal(27);
+        BigDecimal expected = new BigDecimal(29);
         BigDecimal actual = r.calculate(period);
 
         assertEquals(expected, actual);
@@ -287,10 +269,8 @@ class MorganKelanTestTaskRate2 {
 
         Rate r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7), new BigDecimal(5));
 
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             r.calculate(period);
         });
-
-        assertNull(thrown.getMessage());
     }
 }

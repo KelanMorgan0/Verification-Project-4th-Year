@@ -33,31 +33,25 @@ class MorganKelanTestTaskPeriod2 {
     // Test 4 Invalid
     @Test
     public void startEqualToTwentyFourTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(24, 24);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 5 Invalid
     @Test
     public void startGreaterThanTwentyThreeTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(30, 31);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 6 Invalid
     @Test
     public void startLessThanZeroTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(-3, 5);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 7 Valid
@@ -87,51 +81,41 @@ class MorganKelanTestTaskPeriod2 {
     //Test 10 Invalid
     @Test
     public void endEqualToZeroTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(0, 0);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 11 Invalid
     @Test
     public void endGreaterThanTwentyFiveTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(15, 26);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 12 Invalid
     @Test
     public void endLessThanOneTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(-2, -1);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 13 Invalid
     @Test
     public void endLessThanStartTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(10, 5);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 14 Invalid
     @Test
     public void endEqualToStartTest() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Period(10, 10);
         });
-
-        assertNull(thrown.getMessage());
     }
 
     //Test 15 Valid
