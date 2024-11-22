@@ -184,6 +184,64 @@ class MorganKelanTestTaskRate2 {
         });
     }
 
+    //White Box Tests
+    //Test 17 Invalid
+    @Test
+    public void reducedPeriodsIsNullTest() {
+        ArrayList<Period> reducedPeriods = null;
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
+        });
+    }
+
+    //Test 18 Invalid
+    @Test
+    public void normalPeriodsIsNullTest() {
+        ArrayList<Period> normalPeriods = null;
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+           new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
+        });
+    }
+
+    //Test 19 Invalid
+    @Test
+    public void normalRateIsNullTest() {
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, null, new BigDecimal(5));
+        });
+    }
+
+    //Test 20 Invalid
+    @Test
+    public void reducedRateIsNullTest() {
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(9, 15)));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), null);
+        });
+    }
+
+    //Test 21 Invalid
+    @Test
+    public void periodAtStartAndMiddleOverlapTest() {
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(1, 3), new Period(2, 4), new Period(4, 5)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 9)));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal(7.5), new BigDecimal(5));
+        });
+    }
+
+
+
     //Calculate Tests
     //Test 1 Valid
     @Test
@@ -272,5 +330,21 @@ class MorganKelanTestTaskRate2 {
         assertThrows(IllegalArgumentException.class, () -> {
             r.calculate(period);
         });
+    }
+
+    //White Box Tests
+    //Test 7 Valid
+    @Test
+    public void calculateVisitorTest() {
+        Period period = new Period(7, 10);
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+
+        Rate r = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, new BigDecimal(7), new BigDecimal(5));
+
+        BigDecimal expected = new BigDecimal(0);
+        BigDecimal actual = r.calculate(period);
+
+        assertEquals(expected, actual);
     }
 }
