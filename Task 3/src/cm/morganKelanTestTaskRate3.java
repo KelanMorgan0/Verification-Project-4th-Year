@@ -332,18 +332,78 @@ class MorganKelanTestTaskRate2 {
         });
     }
 
-    //White Box Tests
-    //Test 7 Valid
+    //Task 3 Tests
+    //Test 8 Valid
     @Test
-    public void calculateVisitorTest() {
+    public void visitorFirstTenFree() {
+        Period period = new Period(7, 10);
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+
+        Rate r = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, new BigDecimal(2), new BigDecimal(1));
+
+        BigDecimal expected = new BigDecimal("0.0");
+        BigDecimal actual = r.calculate(period);
+
+        assertEquals(expected, actual);
+    }
+
+    //Test 9 Valid
+    @Test
+    public void visitorAfterTenFiftyPercentOff() {
         Period period = new Period(7, 10);
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
 
         Rate r = new Rate(CarParkKind.VISITOR, reducedPeriods, normalPeriods, new BigDecimal(7), new BigDecimal(5));
 
-        BigDecimal expected = new BigDecimal(0);
+        BigDecimal expected = new BigDecimal("5.5");
         BigDecimal actual = r.calculate(period);
+
+        assertEquals(expected, actual);
+    }
+
+    //Test 10 Valid
+    @Test
+    public void managementMinIsFour() {
+        Period period = new Period(7, 10);
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+
+        Rate r = new Rate(CarParkKind.MANAGEMENT, reducedPeriods, normalPeriods, new BigDecimal("1"), new BigDecimal("0.5"));
+
+        BigDecimal expected = new BigDecimal("4.0");
+        BigDecimal actual = r.calculate(period);
+
+        assertEquals(expected, actual);
+    }
+
+    //Test 11 Valid
+    @Test
+    public void studentTwentyFivePercentOffAfterFiveFifty() {
+        Period period = new Period(7, 10);
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+
+        r = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
+
+        BigDecimal expected = new BigDecimal("17.13");
+        BigDecimal actual = r.Calculate(period);
+
+        assertEquals(expected, actual);
+    }
+
+    //Test 12 Valid
+    @Test
+    public void staffMaximumIsSixteen() {
+        Period period = new Period(7, 10);
+        ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
+        ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
+
+        r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, ew BigDecimal("7"), new BigDecimal("5"));
+
+        BigDecimal expected = new BigDecimal("16.0");
+        BigDecimal actual = r.Calculate(period);
 
         assertEquals(expected, actual);
     }
