@@ -127,6 +127,13 @@ public class Rate {
             }
         }
 
+        // staff can only pay maximum 16
+        if (kind.equals(CarParkKind.STAFF)) {
+            if (total.compareTo(BigDecimal.valueOf(16)) > 0) {
+                return new BigDecimal("16.00");
+            }
+        }
+
         return total;
     }
 
