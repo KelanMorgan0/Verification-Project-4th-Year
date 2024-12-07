@@ -385,9 +385,9 @@ class MorganKelanTestTaskRate3 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
 
-        Rate r = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
+        Rate r = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, new BigDecimal("6.5"), new BigDecimal("5"));
 
-        BigDecimal expected = new BigDecimal("17.13");
+        BigDecimal expected = new BigDecimal("16.00");
         BigDecimal actual = r.calculate(period);
 
         assertEquals(expected, actual);
@@ -402,7 +402,7 @@ class MorganKelanTestTaskRate3 {
 
         Rate r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
 
-        BigDecimal expected = new BigDecimal("16.0");
+        BigDecimal expected = new BigDecimal("16.00");
         BigDecimal actual = r.calculate(period);
 
         assertEquals(expected, actual);

@@ -104,6 +104,7 @@ public class Rate {
         BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
 
+        // visitors are free for first 10, then 50% off
         if (kind.equals(CarParkKind.VISITOR)){
             if (total.compareTo(BigDecimal.TEN) < 0) {
                 return new BigDecimal("0.0");
@@ -112,9 +113,17 @@ public class Rate {
             }
         }
 
+        // management has minimum value of 4
         if (kind.equals(CarParkKind.MANAGEMENT)){
             if (total.compareTo(BigDecimal.valueOf(4)) < 0) {
                 return new BigDecimal("4.0");
+            }
+        }
+
+        // students pay with 25% reduction after 5.50
+        if (kind.equals(CarParkKind.STUDENT)){
+            if (total.compareTo(BigDecimal.valueOf(5.50)) > 0) {
+                return (((total.subtract(BigDecimal.valueOf(5.50))).multiply(BigDecimal.valueOf(0.75))).add(BigDecimal.valueOf(5.50))).setScale(2, BigDecimal.ROUND_HALF_UP);
             }
         }
 
