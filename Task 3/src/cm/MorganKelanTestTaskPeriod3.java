@@ -3,7 +3,7 @@ package cm;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class MorganKelanTestTaskPeriod2 {
+class MorganKelanTestTaskPeriod3 {
 
     // Constructor tests
     // Test 1 Valid

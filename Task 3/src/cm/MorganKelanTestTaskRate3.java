@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
-class MorganKelanTestTaskRate2 {
+class MorganKelanTestTaskRate3 {
 
     //Constructor Tests
     //Test 1 Valid
@@ -385,10 +385,10 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
 
-        r = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
+        Rate r = new Rate(CarParkKind.STUDENT, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
 
         BigDecimal expected = new BigDecimal("17.13");
-        BigDecimal actual = r.Calculate(period);
+        BigDecimal actual = r.calculate(period);
 
         assertEquals(expected, actual);
     }
@@ -400,10 +400,10 @@ class MorganKelanTestTaskRate2 {
         ArrayList<Period> reducedPeriods = new ArrayList<>(Arrays.asList(new Period(15, 20), new Period(6, 7)));
         ArrayList<Period> normalPeriods = new ArrayList<>(Arrays.asList(new Period(3, 6), new Period(7, 15)));
 
-        r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, ew BigDecimal("7"), new BigDecimal("5"));
+        Rate r = new Rate(CarParkKind.STAFF, reducedPeriods, normalPeriods, new BigDecimal("7"), new BigDecimal("5"));
 
         BigDecimal expected = new BigDecimal("16.0");
-        BigDecimal actual = r.Calculate(period);
+        BigDecimal actual = r.calculate(period);
 
         assertEquals(expected, actual);
     }

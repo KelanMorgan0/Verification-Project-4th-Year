@@ -97,10 +97,14 @@ public class Rate {
         if (periodStay == null) {
             throw new IllegalArgumentException("Period cannot be null");
         }
+
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+
+        BigDecimal total = new BigDecimal((this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours))));
+
+        return total;
     }
 
 }
